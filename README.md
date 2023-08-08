@@ -6,7 +6,7 @@
 ```
 wget https://github.com/RexLee0929/Pack/releases/download/CuteHttpFileServer/CuteHttpFileServer-linux-amd64-2.0.zip #自行选择对应的压缩包
 unzip CuteHttpFileServer-linux-amd64-2.0.zip #解压到当前目录
-chmod +x ./Ctue/chfs #授予执行权限
+chmod +x ./Cute/chfs #授予执行权限
 ```
 
 运行
