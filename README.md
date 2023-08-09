@@ -78,4 +78,6 @@ pm2 startup
 
 ps:如果服务器带宽大可以考虑使用 `/root/HNet/public/assets` 中的另一个 `css` 有更多壁纸选择
 
+前往 [这里](https://github.com/RexLee0929/Website) 更换书签
+
 [作者仓库](https://github.com/Hideipnetwork/hideipnetwork-web/tree/v3)
