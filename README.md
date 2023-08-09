@@ -37,6 +37,7 @@ http://ip:25252/webdav
 ```
 wget https://github.com/RexLee0929/Pack/releases/download/HNet/HNet.zip
 unzip HNet.zip #解压到当前目录
+cd HNet #进入HNet目录
 ```
 
 看情况修改端口
