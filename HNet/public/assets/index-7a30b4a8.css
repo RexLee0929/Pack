@@ -1,3 +1,45 @@
+/*更改了路径
+书签栏宽度 显示高度
+输入框长度
+联系框圆角
+书签图标弧度
+移除了背景图片滤镜
+移除了字体阴影*/
+@font-face {
+    font-family: 'SF-Pro-Display-Medium';
+    src: url('./Font/SF-Pro-Display-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF-Pro-Rounded-Medium';
+    src: url('./Font/SF-Pro-Rounded-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PingFang Medium';
+    src: url('./Font/PingFang Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: '得意黑 TTF';
+    src: url('./Font/得意黑 TTF.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SFNSMono';
+    src: url('./Font/SFNSMono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @import"https://fonts.font.im/css?family=Fredoka+One";
 
 * {
@@ -7,11 +49,8 @@
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Fredoka One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'SF-Pro-Display-Medium', 'SF-Pro-Rounded-Medium', 'PingFang Medium', '得意黑 TTF', 'SFNSMono', sans-serif;
 }
-
 
 .ban.svelte-slrfmz.svelte-slrfmz.svelte-slrfmz {
     position: fixed;
@@ -370,7 +409,7 @@ html, body {
         position: relative;
         color: #fff;
         cursor: pointer;
-        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15)
+        text-shadow: none
     }
 
     .search-box.svelte-slrfmz.svelte-slrfmz.svelte-slrfmz {
