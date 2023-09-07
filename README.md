@@ -99,7 +99,7 @@ unzip /var/www/V2Board.zip -d /var/www/
 进入目录
 
 ```
-/var/www/V2Board
+cd /var/www/V2Board
 ```
 
 执行
@@ -107,27 +107,78 @@ unzip /var/www/V2Board.zip -d /var/www/
 ```
 wget https://getcomposer.org/installer -O composer.phar
 php composer.phar
+
+```
 php composer.phar install
+
+```
 chmod -R 755 ${PWD}
 chown -R www-data:www-data ${PWD}
 ```
 
+安装
+
+```
+php artisan v2board:install
+```
+
+
+caddy 配置
+
+```
+test {
+
+  # 设置站点运行目录
+  root * /var/www/V2Board/public
+  
+  # 设置文件服务器
+  file_server
+
+  # 设置伪静态路由
+  try_files {path} {path}/ /index.php{query}
+  
+  # 设置 /downloads 路由（假设你有特别的需求，否则这行可省略）
+  route /downloads/* {
+    # 你的配置内容
+  }
+
+  # 设置静态文件缓存
+  @staticFiles {
+    path_regexp static /\.(js|css)$
+  }
+  header @staticFiles Cache-Control "public, max-age=3600"
+
+  # 禁用日志
+  log {
+    output discard
+  }
+
+  # 反向代理到 PHP-FPM（注意更新套接字路径）
+  php_fastcgi unix//run/php/php8.1-fpm.sock
+}
+
+```
 创建守护进程
 ```
-cat </etc/supervisor/conf.d/V2Board
-autorestart=True ; 
-autostart=True ; 
-redirect_stderr=True ; 
-command=php artisan queue:work --queue=send_email,send_telegram,stat_server ; 
-user=root ; 
-directory=/var/www/V2Board/ ; 
-stdout_logfile_maxbytes = 20MB ;
-stdout_logfile_backups = 0 ; 
-stdout_logfile = /var/log/V2Board.log
+cat > /etc/supervisor/conf.d/V2Board.conf <<EOF
+[program:V2Board]
+autorestart=True
+autostart=True
+redirect_stderr=True
+command=php /var/www/V2Board/artisan queue:work --queue=send_email,send_telegram,stat_server
+user=root
+directory=/var/www/V2Board/
+stdout_logfile_maxbytes=20MB
+stdout_logfile_backups=0
+stdout_logfile=/var/log/V2Board.log
+
+EOF
 ```
 
 创建定时任务
 
 ```
-php /var/www/V2Board/artisan schedule:run
+crontab -e
+
+* * * * * php /var/www/V2Board/artisan schedule:run >> /dev/null 2>&1
 ```
