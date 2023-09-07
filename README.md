@@ -107,7 +107,6 @@ cd /var/www/V2Board
 ```
 wget https://getcomposer.org/installer -O composer.phar
 php composer.phar
-
 ```
 php composer.phar install
 
