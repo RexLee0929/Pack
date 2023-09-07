@@ -81,3 +81,38 @@ ps:如果服务器带宽大可以考虑使用 `/root/HNet/public/assets` 中的�
 前往 [这里](https://github.com/RexLee0929/Website) 更换书签
 
 [作者仓库](https://github.com/Hideipnetwork/hideipnetwork-web/tree/v3)
+
+
+
+
+
+
+
+```
+mkdir -p /var/www/V2Board
+cd /var/www/V2Board
+git clone https://github.com/v2board/v2board.git ./
+wget https://getcomposer.org/installer -O composer.phar
+php composer.phar
+php composer.phar install
+chmod -R 755 ${PWD}
+chown -R www-data:www-data ${PWD}
+
+```
+
+```
+cat </etc/supervisor/conf.d/V2Board
+autorestart=True ; 
+autostart=True ; 
+redirect_stderr=True ; 
+command=php artisan queue:work --queue=send_email,send_telegram,stat_server ; 
+user=root ; 
+directory=/var/www/V2Board/ ; 
+stdout_logfile_maxbytes = 20MB ;
+stdout_logfile_backups = 0 ; 
+stdout_logfile = /var/log/V2Board.log
+```
+
+```
+php /var/www/V2Board/artisan schedule:run
+```
