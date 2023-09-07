@@ -163,15 +163,14 @@ test {
 创建守护进程
 ```
 cat > /etc/supervisor/conf.d/V2Board.conf <<EOF
-[program:V2Board]
-autorestart=True
-autostart=True
-redirect_stderr=True
+[program:V2BoardQueue]
+user=www-data
+directory=/var/www/V2Board  # V2Board 的根目录
 command=php /var/www/V2Board/artisan queue:work --queue=send_email,send_telegram,stat_server
-user=root
-directory=/var/www/V2Board/
-stdout_logfile_maxbytes=20MB
-stdout_logfile_backups=0
+numprocs=1
+autostart=true
+autorestart=true
+redirect_stderr=true
 stdout_logfile=/var/log/V2Board.log
 
 EOF
