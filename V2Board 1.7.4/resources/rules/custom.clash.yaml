@@ -1,0 +1,301 @@
+# Clash for Windows By Rex
+mixed-port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: true
+
+
+proxies:
+
+proxy-groups:
+  - { name: 'PROXY', type: select, proxies: ['DIRECT', 'Rex Cloud', 'Hong Kong', 'United States', 'Singapore', 'Japan', 'Direct Serve', /Rex最帅/] }
+  - { name: 'Rex Cloud', type: select, proxies: [] }
+  - { name: 'Game', type: select, proxies: [/Game/, 'DIRECT', 'Rex Cloud', 'Hong Kong', 'United States', 'Singapore', 'Japan', 'Download', 'Direct Serve', /Rex最帅/] }
+  - { name: 'Hong Kong', type: select, proxies: ['DIRECT', /Hong Kong/] }
+  - { name: 'United States', type: select, proxies: ['DIRECT', /States/] }
+  - { name: 'Singapore', type: select, proxies: ['DIRECT', /Singapore/, /Malaysia/] }
+  - { name: 'Japan', type: select, proxies: ['DIRECT', /Japan/] }
+  - { name: 'Download', type: select, proxies: ['DIRECT', //] }
+  - { name: 'Direct Serve', type: select, proxies: ['DIRECT', /直连/, /Vmess/] }
+  - { name: 'OpenAI', type: select, proxies: ['DIRECT', 'Singapore', 'United States', /OP/] }
+  - { name: 'YouTube', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Telegram', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Netflix', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Disney Plus', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'OneDrive', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Microsoft', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'PayPal', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Steam', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+  - { name: 'Apple', type: select, proxies: ['DIRECT', 'PROXY', 'Hong Kong', 'Singapore', 'United States', 'Japan', 'Download', /Rex最帅/] }
+
+  
+rules:
+# >Steam
+  - RULE-SET,Steam,Steam
+# >Game
+  - RULE-SET,Game,Game
+# >GameDownload
+  - RULE-SET,GameDownload,Download
+# >GameDownloadCN
+  - RULE-SET,GameDownloadCN,DIRECT
+# >DNS
+  - RULE-SET,DNS,PROXY
+# >OpenAI
+  - RULE-SET,OpenAI,OpenAI
+# >Apple
+  - RULE-SET,Apple,Apple
+  - RULE-SET,Apple_Domain,Apple
+# >Netflix
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Netflix_IP,Netflix
+# >Disney
+  - RULE-SET,Disney Plus,Disney Plus
+# >YouTube
+  - RULE-SET,YouTube,PROXY
+# >PayPal
+  - RULE-SET,PayPal,PayPal
+# >OneDrive
+  - RULE-SET,OneDrive,OneDrive
+# >Microsoft
+  - RULE-SET,Microsoft,Microsoft
+# >TikTok
+  - RULE-SET,TikTok,United States
+# >WeChat
+  - RULE-SET,WeChat,DIRECT
+# >BiliBili
+  - RULE-SET,BiliBili,DIRECT
+# >Telegram
+  - RULE-SET,Telegram,Telegram
+# >Google
+  - RULE-SET,Google,PROXY
+
+# >Global
+  - RULE-SET,Global,PROXY
+  - RULE-SET,Global_Domain,PROXY
+# >China
+#  - RULE-SET,ChinaMax,DIRECT
+#  - RULE-SET,ChinaMax_Domain,DIRECT
+#  - RULE-SET,ChinaMax_IP,DIRECT
+# >ADs
+#  - RULE-SET,Advertising,REJECT
+#  - RULE-SET,Advertising_Domain,REJECT
+# >DNS泄露
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,PROXY
+  - DOMAIN-SUFFIX,services.googleapis.cn,PROXY
+  - IP-CIDR,120.232.181.162/32,PROXY,no-resolve
+  - IP-CIDR,120.241.147.226/32,PROXY,no-resolve
+  - IP-CIDR,120.253.253.226/32,PROXY,no-resolve
+  - IP-CIDR,120.253.255.162/32,PROXY,no-resolve
+  - IP-CIDR,120.253.255.34/32,PROXY,no-resolve
+  - IP-CIDR,120.253.255.98/32,PROXY,no-resolve
+  - IP-CIDR,180.163.150.162/32,PROXY,no-resolve
+  - IP-CIDR,180.163.150.34/32,PROXY,no-resolve
+  - IP-CIDR,180.163.151.162/32,PROXY,no-resolve
+  - IP-CIDR,180.163.151.34/32,PROXY,no-resolve
+  - IP-CIDR,203.208.39.0/24,PROXY,no-resolve
+  - IP-CIDR,203.208.40.0/24,PROXY,no-resolve
+  - IP-CIDR,203.208.41.0/24,PROXY,no-resolve
+  - IP-CIDR,203.208.43.0/24,PROXY,no-resolve
+  - IP-CIDR,203.208.50.0/24,PROXY,no-resolve
+  - IP-CIDR,220.181.174.162/32,PROXY,no-resolve
+  - IP-CIDR,220.181.174.226/32,PROXY,no-resolve
+  - IP-CIDR,220.181.174.34/32,PROXY,no-resolve
+  
+# >LAN
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,17.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
+  
+rule-providers:
+# >Game
+  Game:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml'
+    path: ./Rules/Game.yaml
+    interval: 86400
+# >GameDownload
+  GameDownload:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownload/GameDownload.yaml'
+    path: ./Rules/GameDownload.yaml
+    interval: 86400
+# >GameDownloadCN
+  GameDownloadCN:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml'
+    path: ./Rules/GameDownloadCN.yaml
+    interval: 86400
+# >DNS
+  DNS:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/DNS/DNS.yaml'
+    path: ./Rules/DNS.yaml
+    interval: 86400
+# >OpenAI
+  OpenAI:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml'
+    path: ./Rules/OpenAI.yaml
+    interval: 86400
+# >Apple
+  Apple:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml'
+    path: ./Rules/Apple.yaml
+    interval: 86400
+  Apple_Domain:
+    type: http
+    behavior: domain
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.yaml'
+    path: ./Rules/Apple_Domain.yaml
+    interval: 86400
+# >Netflix
+  Netflix:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Netflix/Netflix.yaml'
+    path: ./Rules/Netflix.yaml
+    interval: 86400
+  Netflix_IP:
+    type: http
+    behavior: ipcidr
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Netflix/Netflix_IP.yaml'
+    path: ./Rules/Netflix_IP.yaml
+    interval: 86400
+# >Disney
+  Disney Plus:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml'
+    path: ./Rules/Disney_Plus.yaml
+    interval: 86400
+# >Youtube
+  YouTube:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml'
+    path: ./Rules/Media/YouTube.yaml
+    interval: 86400
+# >PayPal
+  PayPal:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PayPal/PayPal.yaml'
+    path: ./Rules/PayPal.yaml
+    interval: 86400
+# >OneDrive
+  OneDrive:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OneDrive/OneDrive.yaml'
+    path: ./Rules/OneDrive.yaml
+    interval: 8640000
+# >Microsoft
+  Microsoft:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml'
+    path: ./Rules/Microsoft.yaml
+    interval: 86400
+# >TikTok
+  TikTok:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml'
+    path: ./Rules/TikTok.yaml
+    interval: 86400
+# >WeChat
+  WeChat:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/WeChat/WeChat.yaml'
+    path: ./Rules/WeChat.yaml
+    interval: 86400
+# >BiliBili
+  BiliBili:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml'
+    path: ./Rules/BiliBili.yaml
+    interval: 86400
+# >Telegram
+  Telegram:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml'
+    path: ./Rules/Telegram.yaml
+    interval: 86400
+# >Google
+  Google:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml'
+    path: ./Rules/Google.yaml
+    interval: 86400
+# >Steam
+  Steam:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml'
+    path: ./Rules/Steam.yaml
+    interval: 86400
+# >Global
+  Global:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global.yaml'
+    path: ./Rules/Global.yaml
+    interval: 86400
+  Global_Domain:
+    type: http
+    behavior: domain
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global_Domain.yaml'
+    path: ./Rules/Global_Domain.yaml
+    interval: 86400
+# >China
+  ChinaMax:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax.yaml'
+    path: ./Rules/ChinaMax.yaml
+    interval: 86400
+  ChinaMax_Domain:
+    type: http
+    behavior: domain
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml'
+    path: ./Rules/ChinaMax_Domain.yaml
+    interval: 86400
+  ChinaMax_IP:
+    type: http
+    behavior: ipcidr
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax_IP.yaml'
+    path: ./Rules/ChinaMax_IP.yaml
+    interval: 86400
+# >ADs
+  Advertising:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising.yaml'
+    path: ./Rules/Advertising.yaml
+    interval: 86400
+  Advertising_Domain:
+    type: http
+    behavior: domain
+    url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising_Domain.yaml'
+    path: ./Rules/Advertising_Domain.yaml
+    interval: 86400
