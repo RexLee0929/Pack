@@ -108,7 +108,10 @@ cd /var/www/V2Board
 wget https://getcomposer.org/installer -O composer.phar
 php composer.phar
 ```
+
+```
 php composer.phar install
+```
 
 ```
 chmod -R 755 ${PWD}
