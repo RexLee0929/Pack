@@ -85,21 +85,34 @@ ps:如果服务器带宽大可以考虑使用 `/root/HNet/public/assets` 中的�
 
 
 
+## V2Board
 
+安装好环境后运行
 
+下载并且解压
 
 ```
-mkdir -p /var/www/V2Board
-cd /var/www/V2Board
-git clone https://github.com/v2board/v2board.git ./
+wget -P /var/www https://github.com/RexLee0929/Pack/releases/download/V2Board/V2Board.zip
+unzip /var/www/V2Board.zip -d /var/www/
+```
+
+进入目录
+
+```
+/var/www/V2Board
+```
+
+执行
+
+```
 wget https://getcomposer.org/installer -O composer.phar
 php composer.phar
 php composer.phar install
 chmod -R 755 ${PWD}
 chown -R www-data:www-data ${PWD}
-
 ```
 
+创建守护进程
 ```
 cat </etc/supervisor/conf.d/V2Board
 autorestart=True ; 
@@ -112,6 +125,8 @@ stdout_logfile_maxbytes = 20MB ;
 stdout_logfile_backups = 0 ; 
 stdout_logfile = /var/log/V2Board.log
 ```
+
+创建定时任务
 
 ```
 php /var/www/V2Board/artisan schedule:run
