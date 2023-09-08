@@ -163,10 +163,10 @@ test {
 创建守护进程
 ```
 cat > /etc/supervisor/conf.d/V2Board.conf <<EOF
-[program:V2BoardQueue]
+[program:V2Board]
 user=www-data
 directory=/var/www/V2Board  # V2Board 的根目录
-command=php /var/www/V2Board/artisan queue:work --queue=send_email,send_telegram,stat_server
+command=php /var/www/V2Board/artisan horizon 
 numprocs=1
 autostart=true
 autorestart=true
@@ -175,6 +175,14 @@ stdout_logfile=/var/log/V2Board.log
 
 EOF
 ```
+
+如果redis密码始终报错,则在V2Board目录执行
+
+```
+php artisan v2board:update
+```
+
+
 
 创建定时任务
 
