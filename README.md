@@ -89,7 +89,7 @@ ps:如果服务器带宽大可以考虑使用 `/root/HNet/public/assets` 中的�
 
 安装好环境后运行
 
-下载并且解压
+下载并且解压后将其覆盖进官方的文件中
 
 ```
 wget -P /var/www https://github.com/RexLee0929/Pack/releases/download/V2Board/V2Board.zip
