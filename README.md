@@ -32,51 +32,7 @@ http://ip:25252/webdav
 
 ## HNet
 
-下载 `HNet` 安装包
-
-```
-wget https://github.com/RexLee0929/Pack/releases/download/HNet/HNet.zip
-unzip HNet.zip #解压到当前目录
-cd HNet #进入HNet目录
-```
-
-看情况修改端口
-
-```
-nano .env
-```
-
-安装依赖
-
-```
-apt install npm
-```
-
-通过 `npm` 安装所需模块
-
-```
-npm install
-```
-
-使用以下命令启动 `HNet`
-
-```
-npm run start
-```
-
-安装 `PM2` 并启动 `HNet`
-
-```
-npm i pm2 -g && pm2 start index.mjs --name HNet
-```
-
-设置 `PM2` 开机启动
-
-```
-pm2 startup
-```
-
-ps:如果服务器带宽大可以考虑使用 `/root/HNet/public/assets` 中的另一个 `css` 有更多壁纸选择
+教程参考: https://blog.rexlee.click/archives/hnet
 
 [作者仓库](https://github.com/Hideipnetwork/hideipnetwork-web/tree/v3)
 
